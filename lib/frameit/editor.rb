@@ -122,6 +122,12 @@ module Frameit
       background
     end
 
+    def overhang_multiplier
+      key = screenshot.portrait? ? 'portrait_overhang_multiplier' : 'landscape_overhang_multiplier'
+    
+      return fetch_config[key] || 1.0;
+    end
+
     def put_device_into_background(background)
       left_space = (background.width / 2.0 - image.width / 2.0).round
       bottom_space = -(image.height / 10).round # to be just a bit below the image bottom
@@ -132,6 +138,8 @@ module Frameit
         bottom_space -= 50 if screenshot.portrait?
         bottom_space += 65 unless screenshot.portrait?
       end
+      
+      bottom_space *= overhang_multiplier
 
       self.top_space_above_device = background.height - image.height - bottom_space
 

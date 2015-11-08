@@ -87,6 +87,15 @@ module Frameit
           if key == 'padding'
             raise "padding must be type integer" unless value.kind_of? Integer
           end
+
+          if key == 'landscape_overhang_multiplier'
+            raise "landscape_overhang_multiplier must be a float" unless value.is_a? Numeric
+          end
+
+          if key == 'portrait_overhang_multiplier'
+            raise "portrait_overhang_multiplier must be a float" unless value.is_a? Numeric
+          end
+
         end
       end
     end
