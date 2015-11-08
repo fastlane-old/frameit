@@ -89,11 +89,11 @@ module Frameit
           end
 
           if key == 'landscape_overhang_multiplier'
-            raise "landscape_overhang_multiplier must be a float" unless value.is_a? Numeric
+            raise "landscape_overhang_multiplier must be a float" unless value.kind_of? Numeric
           end
 
           if key == 'portrait_overhang_multiplier'
-            raise "portrait_overhang_multiplier must be a float" unless value.is_a? Numeric
+            raise "portrait_overhang_multiplier must be a float" unless value.kind_of? Numeric
           end
 
         end
