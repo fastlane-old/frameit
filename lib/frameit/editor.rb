@@ -338,13 +338,13 @@ module Frameit
       fonts = fetch_config[key.to_s]['fonts']
       if fonts
         fonts.each do |font|
-          next if font['supported'].nil?
+          next unless font['supported']
           font['supported'].each do |language|
-              next if !screenshot.path.include? language || !font['fontSize']
-              font_size = font['fontSize'][font_key]
-              return font_size if font_size
-            end
+            next unless (screenshot.path.include? language && font['fontSize'])
+             font_size = font['fontSize'][font_key]
+            return font_size if font_size
           end
+        end
       end
 
       UI.message "No custom fontSize specified for #{screenshot}, using the default one" if $verbose
