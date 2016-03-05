@@ -340,8 +340,8 @@ module Frameit
         fonts.each do |font|
           next unless font['supported']
           font['supported'].each do |language|
-            next unless (screenshot.path.include? language && font['fontSize'])
-             font_size = font['fontSize'][font_key]
+            next unless (screenshot.path.include? language) && font['fontSize']
+            font_size = font['fontSize'][font_key]
             return font_size if font_size
           end
         end
